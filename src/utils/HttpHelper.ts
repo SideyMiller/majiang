@@ -45,11 +45,12 @@ class HttpHelper {
 	}
 	
 	private processHandler(data: any): void {
-		console.log("===processHandler=======");
+		// console.log("===processHandler=======");
 	}
 	
 	private errorHandler(error: any): void {
-		console.log("===errorHandler===");
+		// console.log("===errorHandler===");
+		if (this.cb) this.cb(null);
 	}
 	
 	/**

@@ -1,0 +1,275 @@
+{
+	"frames": {
+		"登录失败.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 144,
+				"h": 52
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 144,
+				"h": 52
+			},
+			"sourceSize": {
+				"w": 144,
+				"h": 52
+			}
+		},
+		"连接失败.png": {
+			"frame": {
+				"x": 1,
+				"y": 55,
+				"w": 468,
+				"h": 52
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 468,
+				"h": 52
+			},
+			"sourceSize": {
+				"w": 468,
+				"h": 52
+			}
+		},
+		"连接文本.png": {
+			"frame": {
+				"x": 1,
+				"y": 109,
+				"w": 236,
+				"h": 44
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 44
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 44
+			}
+		},
+		"不出文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 155,
+				"w": 80,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 57
+			}
+		},
+		"不抢文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 214,
+				"w": 80,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 80,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 80,
+				"h": 57
+			}
+		},
+		"欢迎回来.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 273,
+				"w": 213,
+				"h": 52
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 213,
+				"h": 52
+			},
+			"sourceSize": {
+				"w": 213,
+				"h": 52
+			}
+		},
+		"你输了文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 327,
+				"w": 192,
+				"h": 86
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 192,
+				"h": 86
+			},
+			"sourceSize": {
+				"w": 192,
+				"h": 86
+			}
+		},
+		"你赢了文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 415,
+				"w": 192,
+				"h": 86
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 192,
+				"h": 86
+			},
+			"sourceSize": {
+				"w": 192,
+				"h": 86
+			}
+		},
+		"注册错误文本.png": {
+			"frame": {
+				"x": 1,
+				"y": 503,
+				"w": 216,
+				"h": 52
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 216,
+				"h": 52
+			},
+			"sourceSize": {
+				"w": 216,
+				"h": 52
+			}
+		},
+		"出牌不合法文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 557,
+				"w": 200,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 57
+			}
+		},
+		"等待玩家加入文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 616,
+				"w": 204,
+				"h": 48
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 204,
+				"h": 48
+			},
+			"sourceSize": {
+				"w": 204,
+				"h": 48
+			}
+		},
+		"出牌需要大于上家文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 666,
+				"w": 320,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 57
+			}
+		},
+		"出牌类型跟上家不一致文本.png.png": {
+			"frame": {
+				"x": 1,
+				"y": 725,
+				"w": 400,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 57
+			}
+		}
+	},
+	"meta": {
+		"app": "LayaAir",
+		"version": "1.0",
+		"image": "textspritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 470,
+			"h": 783
+		},
+		"scale": "1"
+	}
+}

@@ -112,7 +112,7 @@ class SocketHelper {
 	private resetHeartbeatTimeout(): void {
 		this.clearHeartbeatTimeout();
 		this.heartbeatTimeoutInterval = setTimeout(() => {
-			console.log('心跳超时，断开连接');
+			// console.log('心跳超时，断开连接');
 			this.websocket?.close();
 		}, this.heartbeatTimeout);
 	}
@@ -150,7 +150,7 @@ class SocketHelper {
 				this.createWebSocket();
 			}, this.reconnectInterval);
 		} else {
-			console.log("Max reconnect attempts reached");
+			// console.log("Max reconnect attempts reached");
 		}
 	}
 	
@@ -190,6 +190,28 @@ class SocketHelper {
 		this.stopHeartbeat();
 		this.reconnect();
 	}
+
+	/**
+	 * 连接断开
+	 * @param e
+	 * @private
+	 */
+	public close(e: any = null): void {
+		console.log("Socket closed");
+		this.stopHeartbeat();
+		if (this.websocket) {
+			// 2. 移除所有监听，防止置空后还有回调尝试访问它导致报错
+			this.websocket.offAll();
+			
+			// 3. 彻底关闭底层连接
+			this.websocket.close();
+			this.websocket.cleanSocket();
+			
+			// 4. 最后才置空
+			this.websocket = null;
+		}
+		
+	}
 	
 	/**
 	 * 有数据接收时的事件回调
@@ -197,7 +219,7 @@ class SocketHelper {
 	 * @private
 	 */
 	private onMessageReceived(message: any = null): void {
-		console.log("从服务端接收websocket消息:", message);
+		// console.log("从服务端接收websocket消息:", message);
 		if (typeof (message) == 'string') {
 			HandleReceivedMessage.onMessageReceived(message);
 		} else if (message instanceof ArrayBuffer) {
@@ -215,7 +237,7 @@ class SocketHelper {
 	 * @private
 	 */
 	private onConnectError(e: Event = null): void {
-		console.log("error");
+		// console.log("error");
 		this.reconnect();
 	}
 }

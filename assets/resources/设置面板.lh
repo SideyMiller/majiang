@@ -1,0 +1,96 @@
+{
+  "_$ver": 1,
+  "_$id": "m7iuhog7",
+  "_$type": "Image",
+  "name": "设置面板",
+  "x": 861,
+  "y": 253,
+  "width": 948,
+  "height": 695,
+  "zIndex": 10000,
+  "centerX": 0,
+  "centerY": 0,
+  "skin": "res://b736645c-6c6c-4c7e-8d89-490d0e2c67f8",
+  "color": "#ffffff",
+  "_$comp": [
+    {
+      "_$type": "1520f4fc-24cf-44e7-9ff3-b6471225cc2b",
+      "scriptPath": "../src/SettingControl.ts",
+      "soundBtn": {
+        "_$ref": "w3ldccr7"
+      },
+      "musicBtn": {
+        "_$ref": "dxpskjzl"
+      },
+      "closeBtn": {
+        "_$ref": "hb9u99u1"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "2oz63z6t",
+      "_$type": "Image",
+      "name": "settingmenu",
+      "x": 324,
+      "y": 16,
+      "width": 200,
+      "height": 69,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "centerX": 0,
+      "centerY": -280,
+      "skin": "res://3321e0be-473a-4f84-8130-75527391b954",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "dxpskjzl",
+      "_$type": "Image",
+      "name": "关闭音乐",
+      "x": 317,
+      "y": 121,
+      "width": 210,
+      "height": 102,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "centerX": 0,
+      "centerY": -150,
+      "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@关闭音乐",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "w3ldccr7",
+      "_$type": "Image",
+      "name": "关闭提示音",
+      "x": 317,
+      "y": 321,
+      "width": 210,
+      "height": 102,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "centerX": 0,
+      "centerY": 50,
+      "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@关闭提示音",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "hb9u99u1",
+      "_$type": "Image",
+      "name": "关闭设置按钮",
+      "x": 317,
+      "y": 521,
+      "width": 210,
+      "height": 102,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
+      "centerX": 0,
+      "centerY": 250,
+      "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@关闭设置按钮",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "module": "es6",
-    "target": "es6",
+    "target": "es2020",
     "strict": true,
-	  "lib": ["ES6", "DOM"],             // 或 ["ES2017", "DOM"]，视你的需求而定
+	  "lib": ["ES2020", "DOM"],             // 或 ["ES2017", "DOM"]，视你的需求而定
     "strictNullChecks": false,
     "noEmitHelpers": true,
     "sourceMap": false,

@@ -43,7 +43,7 @@ class HandleReceivedMessage{
 		} else {
 			data = JSON.parse(message);
 		}
-		console.log("处理来自服务端的消息:", data);
+		// console.log("处理来自服务端的消息:", data);
 		const type = data?.type;
 		const gameInfo = data?.data?.gameInfo;
 		const roomInfo = data?.data?.roomInfo;
@@ -63,6 +63,7 @@ class HandleReceivedMessage{
 		} else if(type === "reconnect"){
 			MainRT.getInstance().initViewPos()
 			MainRT.getInstance().renderTimeStatus();
+			
 			gameInfo?.tableIds?.map((o: string, idx: number) => {
 				MainRT.getInstance().renderHandCards(idx, roomInfo[o]?.handCards, roomInfo[o].pengCards, roomInfo[o].gangCards);
 				MainRT.getInstance().renderPlayedCards(null, o, roomInfo, gameInfo);

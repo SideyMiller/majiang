@@ -8,6 +8,8 @@
   "top": 0,
   "bottom": 0,
   "name": "Scene2D",
+  "width": 2670,
+  "height": 1200,
   "_$comp": [
     {
       "_$type": "7bad1742-6eed-4d8d-81c0-501dc5bf03d6",
@@ -18,11 +20,14 @@
       "roomNum": {
         "_$ref": "ga000bxe"
       },
-      "startBtn": {
+      "readyBtn": {
         "_$ref": "ma3m3k1q"
       },
-      "optionsSpe": {
-        "_$ref": "ajigaid2"
+      "exitBtn": {
+        "_$ref": "7ry93850"
+      },
+      "settingBtn": {
+        "_$ref": "c5qacqs7"
       },
       "passBtn": {
         "_$ref": "poapgr96"
@@ -72,6 +77,54 @@
       "activePlayedImg": {
         "_$ref": "9b76limq"
       },
+      "rightInHand_0": {
+        "_$ref": "ovm40iq6"
+      },
+      "frontInHand": {
+        "_$ref": "38czd1l2"
+      },
+      "leftInHand_0": {
+        "_$ref": "bned1ofu"
+      },
+      "oppositeInHand_0": {
+        "_$ref": "h68482as"
+      },
+      "pengBox_0": {
+        "_$ref": "kaq0vb9s"
+      },
+      "pengBox_1": {
+        "_$ref": "d2rdgiuj"
+      },
+      "pengBox_2": {
+        "_$ref": "1mi689lg"
+      },
+      "pengBox_3": {
+        "_$ref": "c74w5rfy"
+      },
+      "avatarBox_0": {
+        "_$ref": "gt7t50b8"
+      },
+      "avatarBox_1": {
+        "_$ref": "5ri5vbqj"
+      },
+      "avatarBox_2": {
+        "_$ref": "g4lbd34h"
+      },
+      "avatarBox_3": {
+        "_$ref": "o7el79w9"
+      },
+      "name_0": {
+        "_$ref": "bsrf6cx0"
+      },
+      "name_1": {
+        "_$ref": "4heji6cv"
+      },
+      "name_2": {
+        "_$ref": "19ltztmn"
+      },
+      "name_3": {
+        "_$ref": "nrt3836z"
+      },
       "settlementDialog": {
         "_$ref": "2uu16eqe"
       },
@@ -91,7 +144,10 @@
         "_$ref": "cug0t3t0"
       },
       "backHall": {
-        "_$ref": "e6wo5qwt"
+        "_$ref": "klfzqt0c"
+      },
+      "readyagain": {
+        "_$ref": "rjvwqkpp"
       }
     }
   ],
@@ -100,8 +156,8 @@
       "_$id": "53gnma78",
       "_$type": "Sprite",
       "name": "gameLayout",
-      "width": 1334,
-      "height": 750,
+      "width": 2670,
+      "height": 1200,
       "texture": {
         "_$uuid": "154e0fa2-f4a2-4f35-b7e4-d01d61f63f1b",
         "_$type": "Texture"
@@ -109,8 +165,7 @@
       "_mouseState": 2,
       "_$comp": [
         {
-          "_$type": "Animator2D",
-          "controllerLayers": []
+          "_$type": "Animator2D"
         }
       ],
       "_$child": [
@@ -118,10 +173,12 @@
           "_$id": "o8o91qnt",
           "_$type": "Image",
           "name": "roomTime",
-          "x": 602,
-          "y": 310,
+          "x": 1238,
+          "y": 503,
           "width": 130,
           "height": 130,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "centerX": 0,
           "centerY": 0,
           "skin": "res://19247533-1fae-4dd0-9827-e310a38706b3",
@@ -132,11 +189,15 @@
           "_$id": "hvpp6fz8",
           "_$type": "Image",
           "name": "time0",
-          "x": 603.4717135689623,
-          "y": 308.6242814316442,
+          "x": 1238,
+          "y": 503,
           "width": 130,
           "height": 130,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": 0,
+          "centerY": 0,
           "skin": "res://781d1928-1c56-4338-a728-a5e0a6d71dbd",
           "useSourceSize": true,
           "color": "#ffffff"
@@ -145,11 +206,15 @@
           "_$id": "ahs2xr0v",
           "_$type": "Image",
           "name": "time1",
-          "x": 604,
-          "y": 310.00000000000006,
+          "x": 1238,
+          "y": 503,
           "width": 130,
           "height": 130,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": 0,
+          "centerY": 0,
           "skin": "res://69b75b1a-d48f-47c8-b7b4-21e7c09372ca",
           "useSourceSize": true,
           "color": "#ffffff"
@@ -158,11 +223,15 @@
           "_$id": "bkxkwcx7",
           "_$type": "Image",
           "name": "time2",
-          "x": 602.1636130889623,
-          "y": 309.7932262316442,
+          "x": 1238,
+          "y": 503,
           "width": 130,
           "height": 130,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": 0,
+          "centerY": 0,
           "skin": "res://cbc0e896-9ed9-4a9b-9247-f5687f7aede9",
           "useSourceSize": true,
           "color": "#ffffff"
@@ -171,11 +240,15 @@
           "_$id": "6faz5vr0",
           "_$type": "Image",
           "name": "time3",
-          "x": 603.8230703689622,
-          "y": 310.7391558316442,
+          "x": 1238,
+          "y": 503,
           "width": 130,
           "height": 130,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": 0,
+          "centerY": 0,
           "skin": "res://cc697ed2-1dba-469e-aa3a-382b626e74a0",
           "useSourceSize": true,
           "color": "#ffffff"
@@ -184,11 +257,15 @@
           "_$id": "m495doq0",
           "_$type": "Image",
           "name": "countdown0",
-          "x": 641,
-          "y": 352,
+          "x": 1288,
+          "y": 570,
           "width": 30,
           "height": 40,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": -25,
+          "centerY": 0,
           "skin": "res://c13c1b8e-c516-4a0f-98ad-e356f45f0365",
           "color": "#ffffff"
         },
@@ -196,53 +273,30 @@
           "_$id": "siibza38",
           "_$type": "Image",
           "name": "countdown1",
-          "x": 667,
-          "y": 352,
+          "x": 1338,
+          "y": 570,
           "width": 30,
           "height": 40,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "centerX": 25,
+          "centerY": 0,
           "skin": "res://c13c1b8e-c516-4a0f-98ad-e356f45f0365",
-          "color": "#ffffff"
-        },
-        {
-          "_$id": "ma3m3k1q",
-          "_$type": "Image",
-          "name": "startBtn",
-          "x": 582.2121168755192,
-          "y": 459.14752901013577,
-          "width": 362,
-          "height": 134,
-          "scaleX": 0.5,
-          "scaleY": 0.5,
-          "visible": false,
-          "skin": "res://a1ef9556-2ee8-47c9-9c36-aa33f09bd456",
-          "useSourceSize": true,
-          "color": "#ffffff"
-        },
-        {
-          "_$id": "e6wo5qwt",
-          "_$type": "Image",
-          "name": "backHall",
-          "x": 1116,
-          "y": 651,
-          "width": 158,
-          "height": 39,
-          "visible": false,
-          "right": 60,
-          "bottom": 60,
-          "skin": "res://5d6fb62f-3208-45ee-b16b-cb6c04e09d99",
-          "useSourceSize": true,
           "color": "#ffffff"
         },
         {
           "_$id": "s5tjk4h4",
           "_$type": "Image",
           "name": "remainingBg",
-          "x": 413.88927861274857,
-          "y": 355,
+          "x": 991,
+          "y": 514,
           "width": 161,
           "height": 41,
-          "centerY": 0,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "top": 514,
+          "centerX": -223,
           "skin": "res://712c4e72-f7e5-44c3-86b3-87ac4794eb9b",
           "useSourceSize": true,
           "color": "#ffffff",
@@ -275,7 +329,7 @@
               "color": "rgba(181, 254, 80, 1)",
               "align": "center",
               "valign": "middle",
-              "padding": "0,0,0,0"
+              "letterSpacing": 0
             }
           ]
         },
@@ -283,11 +337,14 @@
           "_$id": "l0z9wxl3",
           "_$type": "Image",
           "name": "remainingBg2",
-          "x": 752.3013589139199,
-          "y": 355,
+          "x": 1441,
+          "y": 514,
           "width": 161,
           "height": 41,
-          "centerY": 0,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "top": 514,
+          "centerX": 227,
           "skin": "res://712c4e72-f7e5-44c3-86b3-87ac4794eb9b",
           "useSourceSize": true,
           "color": "#ffffff",
@@ -310,7 +367,7 @@
               "_$id": "a9chaln5",
               "_$type": "Label",
               "name": "Label",
-              "x": 60.6986410860801,
+              "x": 61,
               "y": 3,
               "width": 65,
               "height": 40,
@@ -320,7 +377,7 @@
               "color": "rgba(181, 254, 80, 1)",
               "align": "center",
               "valign": "middle",
-              "padding": "0,0,0,0"
+              "letterSpacing": 0
             }
           ]
         },
@@ -328,8 +385,8 @@
           "_$id": "u2y1yagb",
           "_$type": "Sprite",
           "name": "playedCards0",
-          "x": 380,
-          "y": 452,
+          "x": 950,
+          "y": 780,
           "width": 552,
           "height": 174
         },
@@ -337,8 +394,8 @@
           "_$id": "9527mv4g",
           "_$type": "Sprite",
           "name": "playedCards1",
-          "x": 910,
-          "y": 187,
+          "x": 220,
+          "y": 424,
           "width": 227,
           "height": 362
         },
@@ -346,8 +403,8 @@
           "_$id": "0gsuxczc",
           "_$type": "Sprite",
           "name": "playedCards2",
-          "x": 380,
-          "y": 135,
+          "x": 1120,
+          "y": 170,
           "width": 504,
           "height": 156
         },
@@ -355,10 +412,10 @@
           "_$id": "v6nayp4q",
           "_$type": "Sprite",
           "name": "playedCards3",
-          "x": 140,
-          "y": 200,
-          "width": 236,
-          "height": 324
+          "x": 2090,
+          "y": 424,
+          "width": 227,
+          "height": 362
         },
         {
           "_$id": "9b76limq",
@@ -366,6 +423,8 @@
           "name": "activePlayedImg",
           "width": 18,
           "height": 41,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
           "left": 0,
           "top": 0,
@@ -392,6 +451,262 @@
               ]
             }
           ]
+        },
+        {
+          "_$id": "ma3m3k1q",
+          "_$type": "Image",
+          "name": "准备Btn",
+          "x": 1378,
+          "y": 824,
+          "width": 210,
+          "height": 102,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "visible": false,
+          "zIndex": 1001,
+          "centerX": 200,
+          "centerY": 300,
+          "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@准备按钮.png",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "7ry93850",
+          "_$type": "Image",
+          "name": "退出",
+          "x": 978,
+          "y": 824,
+          "width": 210,
+          "height": 102,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
+          "visible": false,
+          "zIndex": 1001,
+          "centerX": -200,
+          "centerY": 300,
+          "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@退出按钮.png",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "c5qacqs7",
+          "_$type": "Image",
+          "name": "设置按钮",
+          "x": 2380,
+          "y": 50,
+          "width": 315,
+          "height": 153,
+          "scaleX": 0.8,
+          "scaleY": 0.8,
+          "right": 38,
+          "top": 50,
+          "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@设置.png",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "gt7t50b8",
+          "_$type": "Sprite",
+          "name": "avatarBox_0",
+          "x": 100,
+          "y": 840,
+          "width": 215,
+          "height": 215,
+          "texture": {
+            "_$uuid": "015ebf9c-d35e-40ff-9721-0d2200a68055",
+            "_$type": "Texture"
+          },
+          "_$child": [
+            {
+              "_$id": "bsrf6cx0",
+              "_$type": "Label",
+              "name": "Label",
+              "width": 221,
+              "height": 54,
+              "zIndex": 3,
+              "text": "牛逼逼逼逼逼哔哔哔",
+              "font": "STXihei",
+              "fontSize": 36,
+              "color": "#be0091",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "overflow": "ellipsis",
+              "letterSpacing": 0
+            }
+          ]
+        },
+        {
+          "_$id": "5ri5vbqj",
+          "_$type": "Sprite",
+          "name": "avatarBox_1",
+          "x": 2380,
+          "y": 180,
+          "width": 215,
+          "height": 215,
+          "_$child": [
+            {
+              "_$id": "4heji6cv",
+              "_$type": "Label",
+              "name": "Label",
+              "width": 221,
+              "height": 54,
+              "zIndex": 3,
+              "text": "牛逼逼逼逼逼哔哔哔",
+              "font": "STXihei",
+              "fontSize": 36,
+              "color": "#be0091",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "overflow": "ellipsis",
+              "letterSpacing": 0
+            }
+          ]
+        },
+        {
+          "_$id": "g4lbd34h",
+          "_$type": "Sprite",
+          "name": "avatarBox_2",
+          "x": 480,
+          "y": 60,
+          "width": 215,
+          "height": 215,
+          "_$child": [
+            {
+              "_$id": "19ltztmn",
+              "_$type": "Label",
+              "name": "Label",
+              "width": 221,
+              "height": 54,
+              "zIndex": 3,
+              "text": "牛逼逼逼逼逼哔哔哔",
+              "font": "STXihei",
+              "fontSize": 36,
+              "color": "#be0091",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "overflow": "ellipsis",
+              "letterSpacing": 0
+            }
+          ]
+        },
+        {
+          "_$id": "o7el79w9",
+          "_$type": "Sprite",
+          "name": "avatarBox_3",
+          "x": 80,
+          "y": 140,
+          "width": 215,
+          "height": 215,
+          "_$child": [
+            {
+              "_$id": "nrt3836z",
+              "_$type": "Label",
+              "name": "Label",
+              "width": 221,
+              "height": 54,
+              "zIndex": 3,
+              "text": "牛逼逼逼逼逼哔哔哔",
+              "font": "STXihei",
+              "fontSize": 36,
+              "color": "#be0091",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "overflow": "ellipsis",
+              "letterSpacing": 0
+            }
+          ]
+        },
+        {
+          "_$id": "kaq0vb9s",
+          "_$type": "HBox",
+          "name": "pengBox_0",
+          "x": 385,
+          "y": 982,
+          "width": 88,
+          "height": 92,
+          "space": 10
+        },
+        {
+          "_$id": "38czd1l2",
+          "_$type": "HBox",
+          "name": "frontInHand",
+          "x": 425,
+          "y": 942,
+          "width": 1820,
+          "height": 198,
+          "space": 0
+        },
+        {
+          "_$id": "ovm40iq6",
+          "_$type": "VBox",
+          "name": "rightInHand",
+          "x": 2498,
+          "y": 400,
+          "width": 0,
+          "height": 520,
+          "space": -72
+        },
+        {
+          "_$id": "bned1ofu",
+          "_$type": "VBox",
+          "name": "leftInHand",
+          "x": 100,
+          "y": 312,
+          "width": 0,
+          "height": 520,
+          "space": -72
+        },
+        {
+          "_$id": "h68482as",
+          "_$type": "HBox",
+          "name": "oppositeInHand",
+          "x": 740,
+          "y": 60,
+          "width": 1232,
+          "height": 144,
+          "space": 0
+        },
+        {
+          "_$id": "d2rdgiuj",
+          "_$type": "VBox",
+          "name": "pengBox_1",
+          "x": 2320,
+          "y": 400,
+          "width": 88,
+          "height": 72,
+          "space": 0
+        },
+        {
+          "_$id": "1mi689lg",
+          "_$type": "HBox",
+          "name": "pengBox_2",
+          "x": 2270,
+          "y": 180,
+          "width": 88,
+          "height": 72,
+          "space": 10
+        },
+        {
+          "_$id": "c74w5rfy",
+          "_$type": "VBox",
+          "name": "pengBox_3",
+          "x": 180,
+          "y": 400,
+          "width": 88,
+          "height": 72,
+          "space": 0
+        },
+        {
+          "_$id": "dqwddr8y",
+          "_$type": "Box",
+          "name": "avatarBox_4",
+          "x": 1229,
+          "y": 267,
+          "width": 215,
+          "height": 215
         }
       ]
     },
@@ -399,12 +714,15 @@
       "_$id": "2uu16eqe",
       "_$type": "Dialog",
       "name": "settlement",
-      "x": 128,
-      "y": 81,
+      "x": 526,
+      "y": 159,
       "width": 1080,
       "height": 590,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
       "visible": false,
       "_mouseState": 2,
+      "zIndex": 1000,
       "centerX": 1,
       "centerY": 1,
       "isModal": true,
@@ -428,11 +746,43 @@
               "_$type": "Image",
               "name": "status",
               "x": 410,
-              "y": 10.505009112436014,
+              "y": 11,
               "width": 260,
               "height": 144,
               "centerX": 0,
               "skin": "res://56e9715c-2e15-47de-8921-e649dfd8096f",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "rjvwqkpp",
+              "_$type": "Image",
+              "name": "再次准备",
+              "x": 683,
+              "width": 210,
+              "height": 102,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "zIndex": 1002,
+              "top": 0,
+              "centerX": 300,
+              "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@准备按钮.png",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "klfzqt0c",
+              "_$type": "Image",
+              "name": "返回大厅1",
+              "x": 83,
+              "width": 210,
+              "height": 102,
+              "scaleX": 1.5,
+              "scaleY": 1.5,
+              "zIndex": 1002,
+              "top": 0,
+              "centerX": -300,
+              "skin": "res://5e95be6b-617c-4f21-9f90-3d37e3a4f0d5@退出按钮.png",
               "useSourceSize": true,
               "color": "#ffffff"
             },
@@ -469,7 +819,8 @@
                   "height": 30,
                   "fontSize": 20,
                   "color": "#FFFFFF",
-                  "leading": 2
+                  "leading": 2,
+                  "letterSpacing": 0
                 }
               ]
             },
@@ -500,13 +851,14 @@
                   "_$id": "xud3rww0",
                   "_$type": "Text",
                   "name": "score",
-                  "x": 808.9999999999998,
-                  "y": 24.999999999999886,
+                  "x": 809,
+                  "y": 25,
                   "width": 55,
                   "height": 30,
                   "fontSize": 20,
                   "color": "#FFFFFF",
-                  "leading": 2
+                  "leading": 2,
+                  "letterSpacing": 0
                 }
               ]
             },
@@ -537,13 +889,14 @@
                   "_$id": "g0fpgcqq",
                   "_$type": "Text",
                   "name": "score",
-                  "x": 807.9999999999998,
-                  "y": 25.999999999999886,
+                  "x": 808,
+                  "y": 26,
                   "width": 55,
                   "height": 30,
                   "fontSize": 20,
                   "color": "#FFFFFF",
-                  "leading": 2
+                  "leading": 2,
+                  "letterSpacing": 0
                 }
               ]
             },
@@ -574,13 +927,14 @@
                   "_$id": "8gasos0x",
                   "_$type": "Text",
                   "name": "score",
-                  "x": 809.9999999999998,
-                  "y": 20.999999999999943,
+                  "x": 810,
+                  "y": 21,
                   "width": 55,
                   "height": 30,
                   "fontSize": 20,
                   "color": "#FFFFFF",
-                  "leading": 2
+                  "leading": 2,
+                  "letterSpacing": 0
                 }
               ]
             },
@@ -588,14 +942,15 @@
               "_$id": "gkh6hk7c",
               "_$type": "Button",
               "name": "close",
-              "x": 1019.1336576210967,
-              "y": -7.207765485129698,
+              "active": false,
+              "x": 1019,
+              "y": -7,
               "width": 60,
               "height": 60,
+              "visible": false,
               "_mouseState": 2,
               "skin": "res://60a9086c-a9c2-4e01-a563-355c117b509e",
               "label": "",
-              "labelSize": 20,
               "labelAlign": "center",
               "labelVAlign": "middle"
             }
@@ -607,34 +962,41 @@
       "_$id": "ajigaid2",
       "_$type": "Sprite",
       "name": "optionsSpe",
-      "x": 1121,
-      "y": 529,
+      "x": 2268,
+      "y": 777,
       "width": 189,
       "height": 186,
+      "scaleX": 1.5,
+      "scaleY": 1.5,
       "_mouseState": 2,
+      "zIndex": 500,
       "_$child": [
         {
           "_$id": "poapgr96",
           "_$type": "Image",
           "name": "guo",
-          "x": 13.16074249575513,
-          "y": 38.18969506163813,
           "width": 71,
           "height": 67,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "left": 0,
+          "top": 0,
           "skin": "res://7d39e1c8-02c8-4a9f-ad8f-973a41e9abf2",
-          "useSourceSize": true,
           "color": "#ffffff"
         },
         {
           "_$id": "iz5ly6ci",
           "_$type": "Image",
           "name": "peng",
-          "x": 94.99999999999966,
-          "y": 37.99999999999994,
+          "x": 83,
           "width": 71,
           "height": 67,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "right": 0,
+          "top": 0,
           "skin": "res://90a36c7e-2df8-4984-9296-40a24007ebd3",
           "color": "#ffffff"
         },
@@ -642,11 +1004,15 @@
           "_$id": "fhij90hi",
           "_$type": "Image",
           "name": "gang",
-          "x": 11,
-          "y": 116,
+          "x": -12,
+          "y": 86,
           "width": 71,
           "height": 67,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "left": -12,
+          "bottom": 0,
           "skin": "res://6be844ce-d35b-4923-b51f-fbd9402eeaad",
           "color": "#ffffff"
         },
@@ -654,11 +1020,15 @@
           "_$id": "h8jepkrx",
           "_$type": "Image",
           "name": "hu",
-          "x": 100,
-          "y": 115,
+          "x": 83,
+          "y": 86,
           "width": 71,
           "height": 67,
+          "scaleX": 1.5,
+          "scaleY": 1.5,
           "visible": false,
+          "right": 0,
+          "bottom": 0,
           "skin": "res://1651d9db-8f9f-4675-9198-716b0bdc62e4",
           "color": "#ffffff"
         }
@@ -668,35 +1038,31 @@
       "_$id": "74v4qx28",
       "_$type": "Image",
       "name": "roomIdBg",
-      "x": 9,
-      "y": 27,
-      "width": 180,
-      "height": 45,
-      "left": 9,
-      "top": 27,
+      "x": 1134,
+      "y": 439,
+      "width": 418,
+      "height": 74,
+      "left": 1134,
+      "top": 439,
       "skin": "res://51f0b25a-4764-484c-a569-06ba528ad09f",
-      "useSourceSize": true,
       "color": "#ffffff",
       "_$child": [
         {
           "_$id": "ga000bxe",
           "_$type": "Label",
           "name": "Label",
-          "x": -1,
-          "y": -2,
-          "width": 182,
-          "height": 50,
-          "visible": false,
-          "centerX": 0,
+          "width": 418,
+          "height": 74,
+          "left": 0,
           "centerY": 0,
-          "text": "",
+          "text": "房间号:100000000",
           "font": "KaiTi",
-          "fontSize": 30,
+          "fontSize": 50,
           "color": "#FFFFFF",
           "bold": true,
           "align": "center",
           "valign": "middle",
-          "padding": "0,0,0,0"
+          "letterSpacing": 0
         }
       ]
     }

@@ -1,0 +1,375 @@
+{
+	"frames": {
+		"AI对抗.png.png": {
+			"frame": {
+				"x": 2,
+				"y": 2,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"设置.png.png": {
+			"frame": {
+				"x": 216,
+				"y": 2,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"关闭音乐.png": {
+			"frame": {
+				"x": 2,
+				"y": 108,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"注册按钮.png": {
+			"frame": {
+				"x": 216,
+				"y": 108,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"不出按钮.png.png": {
+			"frame": {
+				"x": 2,
+				"y": 214,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"不抢按钮.png.png": {
+			"frame": {
+				"x": 216,
+				"y": 214,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"出牌按钮.png.png": {
+			"frame": {
+				"x": 2,
+				"y": 320,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"两分按钮.png.png": {
+			"frame": {
+				"x": 216,
+				"y": 320,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"提示按钮.png.png": {
+			"frame": {
+				"x": 2,
+				"y": 426,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"退出按钮.png.png": {
+			"frame": {
+				"x": 216,
+				"y": 426,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"一分按钮.png.png": {
+			"frame": {
+				"x": 2,
+				"y": 532,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"真人对抗.png.png": {
+			"frame": {
+				"x": 216,
+				"y": 532,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"准备按钮.png.png": {
+			"frame": {
+				"x": 430,
+				"y": 2,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"关闭提示音.png": {
+			"frame": {
+				"x": 430,
+				"y": 108,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"抢地主按钮.png.png": {
+			"frame": {
+				"x": 430,
+				"y": 214,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"关闭设置按钮.png": {
+			"frame": {
+				"x": 430,
+				"y": 320,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"开启音乐按钮.png": {
+			"frame": {
+				"x": 430,
+				"y": 426,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		},
+		"开启提示音按钮.png": {
+			"frame": {
+				"x": 430,
+				"y": 532,
+				"w": 210,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 210,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 210,
+				"h": 102
+			}
+		}
+	},
+	"meta": {
+		"app": "LayaAir",
+		"version": "1.0",
+		"image": "btnspritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 642,
+			"h": 636
+		},
+		"scale": "1"
+	}
+}

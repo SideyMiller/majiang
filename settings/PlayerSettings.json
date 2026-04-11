@@ -1,8 +1,7 @@
 {
   "resolution": {
-    "designWidth": 1334,
-    "designHeight": 750,
-    "scaleMode": "exactfit",
+    "designWidth": 2670,
+    "designHeight": 1200,
     "screenMode": "horizontal"
   },
   "modules": {
@@ -16,5 +15,6 @@
   "splash": {
     "image": "",
     "fit": "center"
-  }
+  },
+  "stat": true
 }
