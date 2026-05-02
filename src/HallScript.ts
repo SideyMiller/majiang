@@ -78,7 +78,7 @@ export default class HallScript extends Laya.Script {
 			`resources/sound/BGM_Lobby.mp3`
 			
 		];
-		let suits: string[] = ["tiao", "tong", "wan"];
+		let suits: string[] = ["tiao", "tong", "wan", "feng","yuan"];
 		for (let i = 1; i <= 9; i++) {
         // 内层循环 条、筒、万
 			for (let suit of suits) {

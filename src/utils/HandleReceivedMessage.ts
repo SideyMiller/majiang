@@ -43,7 +43,7 @@ class HandleReceivedMessage{
 		} else {
 			data = JSON.parse(message);
 		}
-		// console.log("处理来自服务端的消息:", data);
+		console.log("处理来自服务端的消息:", data);
 		const type = data?.type;
 		const gameInfo = data?.data?.gameInfo;
 		const roomInfo = data?.data?.roomInfo;
@@ -55,7 +55,7 @@ class HandleReceivedMessage{
 			if(roomInfo && typeof roomInfo === 'object' && JSON.stringify(roomInfo) !== "{}"){
 				MainRT.getInstance().enterGameScene();
 			}
-			// 2、绘制头像
+			// 2、绘制头像 
 		} else if (type === "join") {  //加入房间成功
 			MainRT.getInstance().joinRoom(roomInfo);
 		} else if (type === "startGame"){
@@ -78,14 +78,24 @@ class HandleReceivedMessage{
 		} else if (type === "operate") { // 服务器检测到可以操作（杠、碰、胡）
 			const playerId = data?.data?.playerId;
 			const operateType = data?.data?.operateType;
+			const cardNum = data?.data?.cardNum;
 			if(operateType === 4){
-				MainRT.getInstance().checkOperate("win", playerId);
+				MainRT.getInstance().checkOperate("win", playerId,cardNum);
 				MainRT.getInstance().renderTimeStatus();
 			} else if(operateType === 3) {
-				MainRT.getInstance().checkOperate("gang", playerId);
+				MainRT.getInstance().checkOperate("minggang", playerId, cardNum);
 				MainRT.getInstance().renderTimeStatus();
 			} else if(operateType === 2){
-				MainRT.getInstance().checkOperate("peng", playerId);
+				MainRT.getInstance().checkOperate("peng", playerId,cardNum);
+				MainRT.getInstance().renderTimeStatus();
+			} else if(operateType === 5){
+				MainRT.getInstance().checkOperate("bugang", playerId, cardNum);
+				MainRT.getInstance().renderTimeStatus();
+			} else if(operateType === 6){
+				MainRT.getInstance().checkOperate("angang", playerId, cardNum);
+				MainRT.getInstance().renderTimeStatus();
+			} else if(operateType === 7){
+				MainRT.getInstance().checkOperate("huagang", playerId, cardNum);
 				MainRT.getInstance().renderTimeStatus();
 			}
 		} else if (type === "peng" || type === "gang") {  // 碰 or 杠

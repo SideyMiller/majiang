@@ -2,6 +2,15 @@
   "_$ver": 1,
   "_$id": "lx8mwule",
   "_$runtime": "res://cb0e7602-93a5-40c9-ad93-5acbccef11f0",
+  "_$preloads": [
+    "res://96de8e18-7197-4efb-bad1-0f287fe6314d",
+    "res://1cca7604-eb85-40e0-a12d-f6ca20055902",
+    "res://7a7e903f-bce2-461e-add3-cc5aa597f798",
+    "res://242da9e8-6f68-4cef-9ddc-6b0c12d1ffb6",
+    "res://a13f6f82-57b1-4301-aaa1-a6cabf77d2c6",
+    "res://bc13b45c-1029-4eda-9afd-396fd1a93ac7",
+    "res://49a75cb6-0998-4d5f-a148-ba27315022d1"
+  ],
   "_$type": "Scene",
   "left": 0,
   "right": 0,
@@ -35,7 +44,13 @@
       "bumpBtn": {
         "_$ref": "iz5ly6ci"
       },
-      "gangBtn": {
+      "minggangBtn": {
+        "_$ref": "fhij90hi"
+      },
+      "bugangBtn": {
+        "_$ref": "fhij90hi"
+      },
+      "angangBtn": {
         "_$ref": "fhij90hi"
       },
       "winningBtn": {
@@ -163,11 +178,6 @@
         "_$type": "Texture"
       },
       "_mouseState": 2,
-      "_$comp": [
-        {
-          "_$type": "Animator2D"
-        }
-      ],
       "_$child": [
         {
           "_$id": "o8o91qnt",
@@ -394,8 +404,8 @@
           "_$id": "9527mv4g",
           "_$type": "Sprite",
           "name": "playedCards1",
-          "x": 220,
-          "y": 424,
+          "x": 2090,
+          "y": 400,
           "width": 227,
           "height": 362
         },
@@ -403,8 +413,8 @@
           "_$id": "0gsuxczc",
           "_$type": "Sprite",
           "name": "playedCards2",
-          "x": 1120,
-          "y": 170,
+          "x": 1117,
+          "y": 280,
           "width": 504,
           "height": 156
         },
@@ -412,8 +422,8 @@
           "_$id": "v6nayp4q",
           "_$type": "Sprite",
           "name": "playedCards3",
-          "x": 2090,
-          "y": 424,
+          "x": 380,
+          "y": 360,
           "width": 227,
           "height": 362
         },
@@ -512,9 +522,10 @@
           "width": 215,
           "height": 215,
           "texture": {
-            "_$uuid": "015ebf9c-d35e-40ff-9721-0d2200a68055",
+            "_$uuid": "0f1899d2-bc49-4c9a-9ec5-66d489560147",
             "_$type": "Texture"
           },
+          "zIndex": 3,
           "_$child": [
             {
               "_$id": "bsrf6cx0",
@@ -523,7 +534,7 @@
               "width": 221,
               "height": 54,
               "zIndex": 3,
-              "text": "牛逼逼逼逼逼哔哔哔",
+              "text": "",
               "font": "STXihei",
               "fontSize": 36,
               "color": "#be0091",
@@ -531,7 +542,10 @@
               "align": "center",
               "valign": "middle",
               "overflow": "ellipsis",
-              "letterSpacing": 0
+              "letterSpacing": 0,
+              "underlineColor": "#b8b8b8",
+              "stroke": 38,
+              "strokeColor": "#00b9ff"
             }
           ]
         },
@@ -543,6 +557,11 @@
           "y": 180,
           "width": 215,
           "height": 215,
+          "texture": {
+            "_$uuid": "0f1899d2-bc49-4c9a-9ec5-66d489560147",
+            "_$type": "Texture"
+          },
+          "zIndex": 3,
           "_$child": [
             {
               "_$id": "4heji6cv",
@@ -551,7 +570,7 @@
               "width": 221,
               "height": 54,
               "zIndex": 3,
-              "text": "牛逼逼逼逼逼哔哔哔",
+              "text": "",
               "font": "STXihei",
               "fontSize": 36,
               "color": "#be0091",
@@ -559,7 +578,10 @@
               "align": "center",
               "valign": "middle",
               "overflow": "ellipsis",
-              "letterSpacing": 0
+              "letterSpacing": 0,
+              "underlineColor": "#b8b8b8",
+              "stroke": 38,
+              "strokeColor": "#00b9ff"
             }
           ]
         },
@@ -571,6 +593,11 @@
           "y": 60,
           "width": 215,
           "height": 215,
+          "texture": {
+            "_$uuid": "0f1899d2-bc49-4c9a-9ec5-66d489560147",
+            "_$type": "Texture"
+          },
+          "zIndex": 3,
           "_$child": [
             {
               "_$id": "19ltztmn",
@@ -579,7 +606,7 @@
               "width": 221,
               "height": 54,
               "zIndex": 3,
-              "text": "牛逼逼逼逼逼哔哔哔",
+              "text": "",
               "font": "STXihei",
               "fontSize": 36,
               "color": "#be0091",
@@ -587,7 +614,10 @@
               "align": "center",
               "valign": "middle",
               "overflow": "ellipsis",
-              "letterSpacing": 0
+              "letterSpacing": 0,
+              "underlineColor": "#b8b8b8",
+              "stroke": 38,
+              "strokeColor": "#00b9ff"
             }
           ]
         },
@@ -599,6 +629,11 @@
           "y": 140,
           "width": 215,
           "height": 215,
+          "texture": {
+            "_$uuid": "0f1899d2-bc49-4c9a-9ec5-66d489560147",
+            "_$type": "Texture"
+          },
+          "zIndex": 3,
           "_$child": [
             {
               "_$id": "nrt3836z",
@@ -607,7 +642,7 @@
               "width": 221,
               "height": 54,
               "zIndex": 3,
-              "text": "牛逼逼逼逼逼哔哔哔",
+              "text": "",
               "font": "STXihei",
               "fontSize": 36,
               "color": "#be0091",
@@ -615,7 +650,10 @@
               "align": "center",
               "valign": "middle",
               "overflow": "ellipsis",
-              "letterSpacing": 0
+              "letterSpacing": 0,
+              "underlineColor": "#b8b8b8",
+              "stroke": 38,
+              "strokeColor": "#00b9ff"
             }
           ]
         },
@@ -633,47 +671,55 @@
           "_$id": "38czd1l2",
           "_$type": "HBox",
           "name": "frontInHand",
-          "x": 425,
+          "x": 1350,
           "y": 942,
-          "width": 1820,
-          "height": 198,
-          "space": 0
+          "width": 0,
+          "height": 0,
+          "anchorX": 0.5,
+          "space": 0,
+          "autoSizeMode": "both"
         },
         {
           "_$id": "ovm40iq6",
           "_$type": "VBox",
           "name": "rightInHand",
-          "x": 2498,
-          "y": 400,
+          "x": 2300,
+          "y": 660,
           "width": 0,
-          "height": 520,
-          "space": -72
+          "height": 0,
+          "anchorY": 0.5,
+          "space": -72,
+          "autoSizeMode": "both"
         },
         {
           "_$id": "bned1ofu",
           "_$type": "VBox",
           "name": "leftInHand",
-          "x": 100,
-          "y": 312,
+          "x": 250,
+          "y": 618,
           "width": 0,
-          "height": 520,
-          "space": -72
+          "height": 0,
+          "anchorY": 0.5,
+          "space": -72,
+          "autoSizeMode": "both"
         },
         {
           "_$id": "h68482as",
           "_$type": "HBox",
           "name": "oppositeInHand",
-          "x": 740,
-          "y": 60,
-          "width": 1232,
-          "height": 144,
-          "space": 0
+          "x": 1360,
+          "y": 139,
+          "width": 0,
+          "height": 0,
+          "anchorX": 0.5,
+          "space": 0,
+          "autoSizeMode": "both"
         },
         {
           "_$id": "d2rdgiuj",
           "_$type": "VBox",
           "name": "pengBox_1",
-          "x": 2320,
+          "x": 2440,
           "y": 400,
           "width": 88,
           "height": 72,
@@ -683,8 +729,8 @@
           "_$id": "1mi689lg",
           "_$type": "HBox",
           "name": "pengBox_2",
-          "x": 2270,
-          "y": 180,
+          "x": 764,
+          "y": 65,
           "width": 88,
           "height": 72,
           "space": 10
@@ -693,20 +739,11 @@
           "_$id": "c74w5rfy",
           "_$type": "VBox",
           "name": "pengBox_3",
-          "x": 180,
-          "y": 400,
+          "x": 97,
+          "y": 366,
           "width": 88,
           "height": 72,
           "space": 0
-        },
-        {
-          "_$id": "dqwddr8y",
-          "_$type": "Box",
-          "name": "avatarBox_4",
-          "x": 1229,
-          "y": 267,
-          "width": 215,
-          "height": 215
         }
       ]
     },
@@ -1038,12 +1075,12 @@
       "_$id": "74v4qx28",
       "_$type": "Image",
       "name": "roomIdBg",
-      "x": 1134,
-      "y": 439,
+      "x": 1908,
+      "y": 69,
       "width": 418,
       "height": 74,
-      "left": 1134,
-      "top": 439,
+      "left": 1908,
+      "top": 69,
       "skin": "res://51f0b25a-4764-484c-a569-06ba528ad09f",
       "color": "#ffffff",
       "_$child": [

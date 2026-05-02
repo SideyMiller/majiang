@@ -1,0 +1,135 @@
+{
+	"frames": {
+		"avatar.png": {
+			"frame": {
+				"x": 4,
+				"y": 4,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
+		},
+		"avatar2.png": {
+			"frame": {
+				"x": 332,
+				"y": 4,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
+		},
+		"avatar3.png": {
+			"frame": {
+				"x": 660,
+				"y": 4,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
+		},
+		"avatar4.png": {
+			"frame": {
+				"x": 988,
+				"y": 4,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
+		},
+		"avatar5.png": {
+			"frame": {
+				"x": 1316,
+				"y": 4,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
+		},
+		"avatarCommon.png": {
+			"frame": {
+				"x": 1644,
+				"y": 4,
+				"w": 74,
+				"h": 74
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 74,
+				"h": 74
+			},
+			"sourceSize": {
+				"w": 74,
+				"h": 74
+			}
+		}
+	},
+	"meta": {
+		"app": "LayaAir",
+		"version": "1.0",
+		"image": "avatar.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1722,
+			"h": 328
+		},
+		"scale": "1"
+	}
+}

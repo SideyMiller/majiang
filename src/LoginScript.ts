@@ -1,6 +1,5 @@
 import HttpHelper from "./utils/HttpHelper";
 import mapManager from './configs/mapManager';
-import { transact } from './solana-bundle.js';
 
 const {regClass, property} = Laya;
 const Event = Laya.Event;
@@ -143,6 +142,20 @@ export class Script extends Laya.Script {
      */
     private showPrivacyPanel(isGuest: boolean): void {
 		this.playAudio("resources/sound/SE_Btn3.wav", false);
+		const account = this.accountTextInput?.text;
+		if (!account) {
+				// 这里建议加个判断，避免重复添加
+			this.image.skin = "./atlas/textspritesheet/注册错误文本.png";
+			
+			// 建议 2 秒后自动移除提示图，不然会一直叠在屏幕上
+			Laya.timer.once(2000, this, () => 
+					this.image.skin = ""
+			);
+			return;
+            
+            
+        }
+		
         this._isGuestIntent = isGuest; // 存下来，点“同意”时用
         if (this.window) {
             this.window.visible = true;
@@ -204,19 +217,6 @@ export class Script extends Laya.Script {
 	onUpdate(): void {}
 
 	async onLogin(isguest: boolean) {
-		const account = this.accountTextInput?.text;
-		if (!account) {
-				// 这里建议加个判断，避免重复添加
-			this.image.skin = "./atlas/textspritesheet/注册错误文本.png";
-			
-			// 建议 2 秒后自动移除提示图，不然会一直叠在屏幕上
-			Laya.timer.once(2000, this, () => 
-					this.image.skin = ""
-			);
-			return;
-            
-            
-        }
 		
 		// 生成本地用户信息
 				function generateFakeAddress() {
@@ -258,6 +258,7 @@ export class Script extends Laya.Script {
 				
 		this.image.skin = "./atlas/textspritesheet/连接文本.png";
 		let http = new HttpHelper();
+		const account = this.accountTextInput?.text;
 		http.post("/user/login", {account, address}, this.loginCallback.bind(this));
 
 	}

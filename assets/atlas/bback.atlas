@@ -1,0 +1,135 @@
+{
+	"frames": {
+		"tbgs_1.png": {
+			"frame": {
+				"x": 4,
+				"y": 4,
+				"w": 77,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 77,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 77,
+				"h": 72
+			}
+		},
+		"tbgs_2.png": {
+			"frame": {
+				"x": 4,
+				"y": 84,
+				"w": 50,
+				"h": 65
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 50,
+				"h": 65
+			},
+			"sourceSize": {
+				"w": 50,
+				"h": 65
+			}
+		},
+		"tbgs_3.png": {
+			"frame": {
+				"x": 4,
+				"y": 157,
+				"w": 77,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 77,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 77,
+				"h": 72
+			}
+		},
+		"tdbgs_1.png": {
+			"frame": {
+				"x": 4,
+				"y": 237,
+				"w": 57,
+				"h": 44
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 57,
+				"h": 44
+			},
+			"sourceSize": {
+				"w": 57,
+				"h": 44
+			}
+		},
+		"tdbgs_2.png": {
+			"frame": {
+				"x": 4,
+				"y": 289,
+				"w": 44,
+				"h": 57
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 44,
+				"h": 57
+			},
+			"sourceSize": {
+				"w": 44,
+				"h": 57
+			}
+		},
+		"tdbgs_3.png": {
+			"frame": {
+				"x": 4,
+				"y": 354,
+				"w": 57,
+				"h": 44
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 57,
+				"h": 44
+			},
+			"sourceSize": {
+				"w": 57,
+				"h": 44
+			}
+		}
+	},
+	"meta": {
+		"app": "LayaAir",
+		"version": "1.0",
+		"image": "bback.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 85,
+			"h": 402
+		},
+		"scale": "1"
+	}
+}

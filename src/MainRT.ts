@@ -117,8 +117,8 @@ export default class MainRT extends Laya.Scene {
 	/**
 	 * 可以操作
 	 */
-	public checkOperate(operateType: string, playerId: string): void{
-		this._control.checkOperate(operateType,playerId);
+	public checkOperate(operateType: string, playerId: string, cardNum:number): void{
+		this._control.checkOperate(operateType,playerId,cardNum);
 	}
 	
 	/**

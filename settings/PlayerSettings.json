@@ -2,6 +2,7 @@
   "resolution": {
     "designWidth": 2670,
     "designHeight": 1200,
+    "scaleMode": "fixedauto",
     "screenMode": "horizontal"
   },
   "modules": {
@@ -15,6 +16,5 @@
   "splash": {
     "image": "",
     "fit": "center"
-  },
-  "stat": true
+  }
 }

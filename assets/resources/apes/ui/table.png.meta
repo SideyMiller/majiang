@@ -3,7 +3,8 @@
   "importer": {
     "sRGB": true,
     "alphaChannel": true,
-    "premultiplyAlpha": true,
-    "generateMipmap": true
+    "filterMode": 0,
+    "generateMipmap": true,
+    "premultiplyAlpha": true
   }
 }

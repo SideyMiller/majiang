@@ -1,11 +1,9 @@
 import mapManager from "./configs/mapManager";
 import SocketHelper from "./utils/SocketHelper";
 import Sprite = Laya.Sprite;
-import Handler = Laya.Handler;
 import HttpHelper from "./utils/HttpHelper";
 import VBox = Laya.VBox;
 import HBox = Laya.HBox;
-const Stage = Laya.Stage;
 const Event = Laya.Event;
 const Image = Laya.Image;
 
@@ -39,7 +37,11 @@ export default class Main extends Laya.Script {
 	@property({type: Laya.Image})
 	public bumpBtn: Laya.Image;
 	@property({type: Laya.Image})
-	public gangBtn: Laya.Image;
+	public minggangBtn: Laya.Image;
+	@property({type: Laya.Image})
+	public bugangBtn: Laya.Image;
+	@property({type: Laya.Image})
+	public angangBtn: Laya.Image;
 	@property({type: Laya.Image})
 	public winningBtn: Laya.Image;
 	
@@ -59,7 +61,7 @@ export default class Main extends Laya.Script {
 	@property({type: Laya.Image})
 	public countdown1: Laya.Image;
 	// 每次打牌后最多20秒倒计时
-	private countdownNum: number = 20;
+	private countdownNum: number = 2;//一会记得改  
 	// 剩余多少张牌label
 	@property({type: Laya.Label})
 	public remainingLabel: Laya.Label;
@@ -136,13 +138,10 @@ export default class Main extends Laya.Script {
 	//ws实例
 	public _socket: SocketHelper;
 	private bankerImg: string = "resources/apes/avatar/banker.png";
-	private avatarImg: string = "resources/apes/avatar/avatar.png";
-	private avatarImg2: string = "resources/apes/avatar/avatar2.png";
-	private avatarImg3: string = "resources/apes/avatar/avatar3.png";
-	private avatarImg4: string = "resources/apes/avatar/avatar4.png";
-	private rightInHand: string = "resources/apes/cardBack/right_inhand_0.png";
-	private oppositeInHand: string = "resources/apes/cardBack/opposite_inhand_0.png";
-	private leftInHand: string = "resources/apes/cardBack/left_inhand_0.png";
+	
+	private rightInHand: string = "./atlas/bback/tbgs_1.png";
+	private oppositeInHand: string = "./atlas/bback/tbgs_2.png";
+	private leftInHand: string = "./atlas/bback/tbgs_3.png";
 	private playerNum: number = 0;
 	private viewPos: Array<number> = [];
 	
@@ -152,12 +151,9 @@ export default class Main extends Laya.Script {
 	private activeCard: Laya.Image;    //用户当前操作的牌
 	private activeCardNum: number;
 	
-	
+	activeOperateCardNum: number;
 	private myCardImgs: Array<Laya.Image> =[];
 	private allUiCards: Array<Laya.Image> =[];   // 存储所有牌的UI节点，方便特殊操作
-	
-	// 一局允许的玩家数量
-	private allowPlayerCount:number = 1;
 	
 	// layaAir 引擎会在场景或网页失焦和最小化时，timer会置为0帧，timer.frameloop 会停止
 	// 兼容方案： 1、用JS的setInterval  2、使用 onUpdate 生命周期
@@ -189,7 +185,9 @@ export default class Main extends Laya.Script {
 		this.settingBtn.on(Event.CLICK, this, this.settingset)
 		this.passBtn.on(Event.CLICK, this, this.pass)
 		this.bumpBtn.on(Event.CLICK, this, this.peng)
-		this.gangBtn.on(Event.CLICK, this, this.gang)
+		this.minggangBtn.on(Event.CLICK, this, this.gang, ["minggang","杠"])
+		this.bugangBtn.on(Event.CLICK, this, this.gang, ["bugang","杠"])
+		this.angangBtn.on(Event.CLICK, this, this.gang, ["angang","杠"])
 		this.winningBtn.on(Event.CLICK, this, this.win)
 		//返回大厅
 		this.backHall.on(Event.CLICK, this, () => {this.settlementDialog.visible = false ;this.backToHall();})
@@ -198,7 +196,7 @@ export default class Main extends Laya.Script {
 		
 		let isSoundMuted = Laya.LocalStorage.getItem("Game_Sound_IsMuted") === "1";
 		let isMusicMuted = Laya.LocalStorage.getItem("Game_Music_IsMuted") === "1";
-
+		
 		Laya.SoundManager.soundMuted = isSoundMuted;
 		Laya.SoundManager.musicMuted = isMusicMuted;
 
@@ -219,6 +217,7 @@ export default class Main extends Laya.Script {
 			`resources/sound/碰音效.mp3`,
 			`resources/sound/杠音效.mp3`,
 			`resources/sound/胡音效.mp3`
+			
 		];
 		Laya.loader.load(resArr);
 	}
@@ -277,13 +276,14 @@ export default class Main extends Laya.Script {
 		// 根据 idx 或逻辑控制庄家显隐 (这里假设 idx 0 是庄)
 		banker.visible = (idx === 0);
 		
-		let textureUrl: string = "";
-		if (viewPos[idx] === 0) textureUrl = this.avatarImg2;
-		else if (viewPos[idx] === 1) textureUrl = this.avatarImg3;
-		else if (viewPos[idx] === 2) textureUrl = this.avatarImg4;
-		else if (viewPos[idx] === 3) textureUrl = this.avatarImg;
-
+		let textureUrl: string = "";		
+		if (viewPos[idx] === 0) textureUrl = "./atlas/avatar/avatar2.png";
+		else if (viewPos[idx] === 1) textureUrl = "./atlas/avatar/avatar3.png";
+		else if (viewPos[idx] === 2) textureUrl = "./atlas/avatar/avatar4.png";
+		else if (viewPos[idx] === 3) textureUrl = "./atlas/avatar/avatar5.png";
 		box.texture = Laya.loader.getRes(textureUrl);
+		
+	
 
 	}
 
@@ -350,25 +350,13 @@ export default class Main extends Laya.Script {
 
 		const banker = this.owner.getChildByName("banker")
 		banker?.removeSelf()
-		// const fakeIds = ["1", "2", "3", "4"]; // 强行造 4 个 ID
-		// const fakeViewPos = [0, 1, 2, 3];    // 强行定死 四家位置
-		// const dummyCards = [11, 11, 11, 11, 11, 11,11]; // 随便来点假牌
 		tableIds.map((o: string, idx: number)=>{
 
 			const playerName = roomInfo[o]?.name;
-
-
 			this.renderAvatar(viewPos, idx, playerName)
 			
 		});
-		// this.viewPos = fakeViewPos;
-		// fakeIds.map((o: string, idx: number) => {
-		// 	// 1. 强行画头像 (这里传入我们造的 fakeViewPos)
-		// 	this.renderAvatar(fakeViewPos, idx);
-			
-		// 	// 2. 强行画手牌 (这里的 idx 对应 0,1,2,3，会触发你 renderHandCards 里的四个 if 分支)
-		// 	this.renderHandCards(idx, dummyCards,[11,11,11],[11,11,11,11]);
-		// });
+
 	}
 	
 	/**
@@ -486,9 +474,22 @@ export default class Main extends Laya.Script {
 	 * 获取手牌的图片资源
 	 */
 	getHandCardImageUrl(num: number): string{
-		let unit = num % 50 > 30 ? "b" : num % 50 > 20 ? 't' : num % 50 > 10 ? "w" : '';
-		let unitNum = (num % 50)%10;
-		return `resources/apes/myCard/${unit}${unitNum}.png`
+		let unit = ""
+		let unitNum = 0
+		if(num > 210){
+			unit = "b6"
+			unitNum = num % 10 // 211→1, 212→2, 221→1, 224→4
+		}else{
+			const mod = num % 50
+			unit = mod >= 41 && mod <= 44 ? "b4"   // 风
+				: mod >= 31 && mod <= 39 ? "b2"   // 筒
+				: mod >= 21 && mod <= 29 ? "b3"   // 条
+				: mod >= 11 && mod <= 19 ? "b1"   // 万
+				: mod >= 1  && mod <= 3  ? "b5"   // 三元
+				: ""
+			unitNum = mod % 10
+		}
+		return `./atlas/mycard/p4${unit}_${unitNum}.png`
 	}
 	
 	/**
@@ -497,10 +498,24 @@ export default class Main extends Laya.Script {
 	 * @param viewPosNum
 	 */
 	getPlayedCardsImageUrl(num: number, viewPosNum: number): string{
-		const unit = num % 50 > 30 ? "b" : num % 50 > 20 ? 't' : num % 50 > 10 ? "w" : '';
-		const unitNum = (num % 50)%10;
+		let unit = ""
+		let unitNum = 0
+		if(num > 210){
+			unit = "s6"
+			unitNum = num % 10 // 211→1, 212→2, 221→1, 224→4
+		}else{
+			const mod = num % 50
+			unit = mod >= 41 && mod <= 44 ? "s4"   // 风
+				: mod >= 31 && mod <= 39 ? "s2"   // 筒
+				: mod >= 21 && mod <= 29 ? "s3"   // 条
+				: mod >= 11 && mod <= 19 ? "s1"   // 万
+				: mod >= 1  && mod <= 3  ? "s5"   // 三元
+				: ""
+			unitNum = mod % 10
+		}	
 		const posFolder = viewPosNum === 0 ? 'first' : viewPosNum === 1 ? 'second' : viewPosNum === 2 ? 'third' : viewPosNum === 3 ? 'fourth' : "";
-		return `resources/apes/${posFolder}/b${unit}${unitNum}.png`
+		const posNum = viewPosNum === 0 ? '4' : viewPosNum === 1 ? '1' : viewPosNum === 2 ? '2' : viewPosNum === 3 ? '3' : "";
+		return `./atlas/${posFolder}/p${posNum}${unit}_${unitNum}.png`
 	}
 	
 	
@@ -509,7 +524,7 @@ export default class Main extends Laya.Script {
 	 */
 	renderHandCards(idx: number, handCards: number[], pengCards: number[] = [], gangCards: number[] = []): void{
 		this.myCardImgs = [];
-		const k = 2.0; // 放大倍率
+		const k = 1.5; // 放大倍率
 
 		// 💡 统一获取碰/杠操作牌
 		const operateCards = pengCards.concat(gangCards);
@@ -519,12 +534,11 @@ export default class Main extends Laya.Script {
             let opBox = this.pengBox_0;
 			handBox.destroyChildren();
             opBox.destroyChildren();
-			let firstX = (Laya.stage.designWidth - handCards.length * (65 * k)) / 2 + (operateCards.length / 3 + operateCards.length / 4) * (46 * k);
-            let firstY = Laya.stage.designHeight - (99 * k) - (30 * k);
+			
             
             // 处理碰/杠牌
             opBox.space = 5 * k;
-            opBox.pos(firstX - (operateCards.length * 44 * k) - (20 * k), firstY + (20 * k)); 
+             
             operateCards?.forEach((p: number) => {
                 let img = new Image(this.getPlayedCardsImageUrl(p, this.viewPos[idx]));
                 img.size(44 * k, 46 * k); 
@@ -532,8 +546,7 @@ export default class Main extends Laya.Script {
                 opBox.addChild(img);
             });
 			// 处理手牌
-            handBox.size(handCards.length * (65 * k), 99 * k);
-            handBox.pos(firstX, firstY);
+            
             handCards?.forEach((h: number, childIdx: number) => {
                 let imgUrl = this.getHandCardImageUrl(h);
                 let img = new Image(imgUrl);
@@ -550,10 +563,9 @@ export default class Main extends Laya.Script {
 			handBox.destroyChildren();
             opBox.destroyChildren();
 
-			const firstX = Laya.stage.designWidth - (30 + 30 + 26) * k, firstY = 200 * k;
-			// 处理碰/杠牌
+			
             opBox.space = 0;
-            opBox.pos(firstX - (59 + 30) * k, firstY);
+            
             operateCards?.forEach((p: number) => {
                 let img = new Image(this.getPlayedCardsImageUrl(p, this.viewPos[idx]));
                 img.size(44 * k, 36 * k); 
@@ -562,7 +574,7 @@ export default class Main extends Laya.Script {
             });
 
             // 处理手牌
-            handBox.pos(firstX, firstY); 
+          
             handBox.space = -36 * k;
             handCards?.forEach((h: number, childIdx: number) => {
                 let img = new Image(this.rightInHand);
@@ -577,10 +589,10 @@ export default class Main extends Laya.Script {
             let opBox = this.pengBox_2;
 			handBox.destroyChildren();
             opBox.destroyChildren();
-			const firstX = 370 * k, firstY = 30 * k;
+			
 			// 处理碰/杠牌
             opBox.space = 5 * k;
-            opBox.pos(Laya.stage.designWidth - (operateCards.length * 44 * k) - (200 * k), firstY);
+           
             operateCards?.forEach((p: number) => {
                 let img = new Image(this.getPlayedCardsImageUrl(p, this.viewPos[idx]));
                 img.size(44 * k, 46 * k);
@@ -589,8 +601,7 @@ export default class Main extends Laya.Script {
             });
 
             // 处理手牌
-            handBox.pos(firstX, firstY);
-            handBox.size(handCards?.length * (44 * k), 72 * k);
+            
             handCards?.forEach((h: number, childIdx: number) => {
                 let img = new Image(this.oppositeInHand);
                 img.size(44 * k, 72 * k); 
@@ -606,10 +617,10 @@ export default class Main extends Laya.Script {
             handBox.destroyChildren();
             opBox.destroyChildren();
 
-			const firstX = (30 + 20) * k, firstY = 200 * k;
+			
 			// 处理碰/杠牌
             opBox.space = 0;
-            opBox.pos(firstX + (40 * k), firstY);
+            
             operateCards?.forEach((p: number) => {
                 let img = new Image(this.getPlayedCardsImageUrl(p, this.viewPos[idx]));
                 img.size(44 * k, 36 * k);
@@ -618,7 +629,7 @@ export default class Main extends Laya.Script {
             });
 
             // 处理手牌
-            handBox.pos(firstX, firstY); 
+            
             handBox.space = -36 * k;
             handCards?.forEach((h: number, childIdx: number) => {
                 let img = new Image(this.leftInHand);
@@ -640,6 +651,7 @@ export default class Main extends Laya.Script {
 	 * @private
 	 */
 	private handleCardClick(cardNode: Laya.Image, cardNum: number): void {
+		if (cardNum >= 211 && cardNum <= 218) return;
 		let permission = this.checkCanOperate()
 		if(!permission) return
 
@@ -670,24 +682,12 @@ export default class Main extends Laya.Script {
 		this._socket.sendMessage(JSON.stringify({type: "playCard", data: {roomId, cardNum, userId: userInfo?.id}}))
 		this.activeCardNum = cardNum;
 		if(this.bumpBtn.visible) this.bumpBtn.visible = false;
-		if(this.gangBtn.visible) this.gangBtn.visible = false;
+		if(this.minggangBtn.visible) this.minggangBtn.visible = false;
+		if(this.bugangBtn.visible) this.bugangBtn.visible = false;
+		if(this.angangBtn.visible) this.angangBtn.visible = false;
 		if(this.winningBtn.visible) this.winningBtn.visible = false;
 		this.playAudio("出牌",false);
-		// 2. 解析 cardNum，算出对应的女声文件名
-		// 数学计算：
-		// val 得到 1-9
-		// suitIdx 得到 0(wan), 1(tong), 2(tiao)
-		let n = cardNum % 50;
-		let val = n % 10;
-		let suit = n > 30 ? "tong" : n > 20 ? "tiao" : n > 10 ? "wan" : "";
-
-		// 3. 拼出路径：resources/sound/female/g_5wan.mp3
-		let voiceUrl = `resources/sound/female/g_${val}${suit}.mp3`;
 		
-		// 4. 播报女声（延迟 100-200ms 效果更真实，像先敲桌子再说话）
-		Laya.timer.once(150, this, () => {
-			this.playAudio(voiceUrl, false);
-		});
 	}
 	
 	/**
@@ -700,9 +700,21 @@ export default class Main extends Laya.Script {
 			this.passBtn.visible = false
 			return;
 		}
-		if (this.gangBtn.visible) { //直接杠
-			this.gang()
-			this.gangBtn.visible = false
+		if (this.minggangBtn.visible ) { //直接杠
+			this.gang('minggang',"杠",this.activeOperateCardNum)
+			this.minggangBtn.visible = false
+			this.passBtn.visible = false
+			return;
+		}
+		if (this.bugangBtn.visible) { //直接杠
+			this.gang('bugang',"杠",this.activeOperateCardNum)
+			this.bugangBtn.visible = false
+			this.passBtn.visible = false
+			return;
+		}
+		if (this.angangBtn.visible) { //直接杠
+			this.gang('angang',"杠",this.activeOperateCardNum)
+			this.angangBtn.visible = false
 			this.passBtn.visible = false
 			return;
 		}
@@ -728,7 +740,9 @@ export default class Main extends Laya.Script {
 		this.activeCardNum = cardNum;
 		if(this.passBtn.visible)this.passBtn.visible=false
 		if(this.bumpBtn.visible)this.bumpBtn.visible=false
-		if(this.gangBtn.visible)this.gangBtn.visible=false
+		if(this.minggangBtn.visible)this.minggangBtn.visible=false
+		if(this.bugangBtn.visible)this.bugangBtn.visible=false
+		if(this.angangBtn.visible)this.angangBtn.visible=false
 	}
 	
 	/**
@@ -747,7 +761,7 @@ export default class Main extends Laya.Script {
 		if(!container) return;
 		container.removeChildren();
 
-		const hCount = 10; // 每行放10张牌
+		const hCount = 8; // 每行放10张牌
 		const maxCards = hCount * 2; // 最多放两行（20张）
 
 		// 💡 核心修改：如果出的牌超过20张，只截取最后20张，把老的顶掉！
@@ -777,6 +791,32 @@ export default class Main extends Laya.Script {
 
 			// 出牌指示器（那个小箭头）
 			if (kCard === cardNum && childIdx === renderCards.length - 1) {
+
+				// 2. 解析 cardNum，算出对应的女声文件名
+				// 数学计算：
+				// val 得到 1-9
+				// suitIdx 得到 0(wan), 1(tong), 2(tiao)
+				let n = cardNum % 50;
+				let val = n % 10;
+				let suit = n >= 31 && n <= 39 ? "tong" 
+						 : n >= 21 && n <= 29 ? "tiao" 
+						 : n >= 11 && n <= 19 ? "wan" 
+						 : "";
+				let voiceUrl = ``;
+				if (suit) {
+					voiceUrl = `resources/sound/female/g_${val}${suit}.mp3`;
+				} else if (n >= 41 && n <= 44) {
+					// 风牌 东南西北
+					voiceUrl = `resources/sound/female/g_${val}feng.mp3`;
+				} else if (n >= 1 && n <= 3) {
+					// 三元 中发白
+					voiceUrl = `resources/sound/female/g_${val}yuan.mp3`;
+				}
+				// 4. 播报女声（延迟 100-200ms 效果更真实，像先敲桌子再说话）
+				Laya.timer.once(150, this, () => {
+					this.playAudio(voiceUrl, false);
+				});
+
 				let arrowX = img.x + (pW / 2) - (15 * k);
 				let arrowY = img.y - (30 * k);
 				this.activePlayedImg.pos(container.x + arrowX, container.y + arrowY);
@@ -825,7 +865,10 @@ export default class Main extends Laya.Script {
 		this._started = false;
 		// 2.销毁所有定时器
 		Laya.timer.clearAll(this);
-		this.clearAllCardsUI();
+		setTimeout(() => {
+			this.clearAllCardsUI();
+		}, 2000);
+		
 	}
 
 	private clearAllCardsUI(): void {
@@ -943,7 +986,7 @@ export default class Main extends Laya.Script {
 
 		// 状态管理
 		this._started = true;
-		console.log("--- 游戏视角与状态初始化完成 ---");
+		// console.log("--- 游戏视角与状态初始化完成 ---");
 	}
 
 	/**
@@ -1005,21 +1048,31 @@ export default class Main extends Laya.Script {
 	/**
 	 * 检测道可以执行操作（碰杠胡）
 	 */
-	public checkOperate(operateType: string, playerId: string): void{
+	public checkOperate(operateType: string, playerId: string, cardNum?: number): void{
+		this.activeOperateCardNum = cardNum;
+		
 		const userInfo = dataManager.getData("userInfo");
 		if (userInfo?.id !== playerId) return
 		if (operateType === "peng") {
 			this.bumpBtn.visible = true;
 			this.passBtn.visible = true;
-		} else if (operateType === "gang") {
-			this.gangBtn.visible = true;
+		} else if (operateType === "minggang") {
+			this.minggangBtn.visible = true;
 			this.passBtn.visible = true;
 		} else if (operateType === "win") {
 			this.winningBtn.visible = true;
 			this.passBtn.visible = true;
-		} else {
-			this.passBtn.visible = false; 	   
+		} else if (operateType === "bugang") {
+			this.bugangBtn.visible = true;
+			this.passBtn.visible = true;
+		} else if (operateType === "angang") {
+			this.angangBtn.visible = true;
+			this.passBtn.visible = true; 	   
+		} else if (operateType === "huagang") {
+			
+			this.gang("huagang" , null, cardNum)	   
 		}
+		
 	}
 	
 	/**
@@ -1030,7 +1083,9 @@ export default class Main extends Laya.Script {
 		this.playAudio("按钮", false);
 		this.passBtn.visible = false;
 		this.bumpBtn.visible = false;
-		this.gangBtn.visible = false;
+		this.minggangBtn.visible = false;
+		this.bugangBtn.visible = false;
+		this.angangBtn.visible = false;
 	}
 	/**
 	 * 碰
@@ -1042,15 +1097,10 @@ export default class Main extends Laya.Script {
 		
 		const userInfo = dataManager.getData("userInfo");
 		const roomInfo = dataManager.getData("roomInfo");
-		const handCards = roomInfo[userInfo?.id]?.handCards;
+		
 		const roomId = roomInfo[userInfo?.id]?.roomId;
-		let pengArr: number[] = []
-		handCards.map((m: number)=>{
-			if(m%50 === this.activeCardNum%50){
-				pengArr.push(m)
-			}
-		})
-		this._socket.sendMessage(JSON.stringify({type: "peng", data: {roomId, pengArr, userId: userInfo?.id, cardNum: this.activeCardNum}}))
+		
+		this._socket.sendMessage(JSON.stringify({type: "peng", data: {roomId, userId: userInfo?.id, cardNum: this.activeOperateCardNum}}))
 		this.bumpBtn.visible = false;
 		this.passBtn.visible = false;
 		this.playAudio("按钮", false);
@@ -1067,30 +1117,51 @@ export default class Main extends Laya.Script {
 	 * 杠
 	 * 【打出3张牌】
 	 */
-	private gang(): void{	
+	private gang(type: string , audio:string ,cardNum:number): void{
+		
 		const userInfo = dataManager.getData("userInfo");
 		const roomInfo = dataManager.getData("roomInfo");
-		const handCards = roomInfo[userInfo?.id]?.handCards;
 		const roomId = roomInfo[userInfo?.id]?.roomId;
-		let gangArr: number[] = []
-		handCards.map((m: number)=>{
-			if(m%50 === this.activeCardNum%50){
-				gangArr.push(m)
-			}
-			if (gangArr.length === 4) {
-    		gangArr.pop(); 
-	  		}
-		})
-		this._socket.sendMessage(JSON.stringify({type: "gang", data: {roomId, gangArr, userId: userInfo?.id, cardNum: this.activeCardNum}}))
-		this.gangBtn.visible = false
-		this.passBtn.visible = false;
-		this.playAudio("按钮", false);
-		Laya.timer.once(150, this, () => {
-			this.playAudio("gang", false);
-		});
-		Laya.timer.once(150, this, () => {
-			this.playAudio("杠",false)
-		});
+		const sendCardNum = cardNum;
+		
+		if (type === "huagang") {
+			// 服务器发来什么cardNum就返回什么
+			
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: sendCardNum,type: type  } }));
+        
+		} else if (type === "angang") {
+			this.angangBtn.visible = false;
+			this.passBtn.visible = false;
+			Laya.timer.once(150, this, () => {
+				this.playAudio("gang", false);
+			});
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeCardNum,type: type } }));
+			this.playAudio("按钮", false);
+
+		} else if (type === "bugang") {
+			this.bugangBtn.visible = false;
+			this.passBtn.visible = false;
+			this.playAudio("按钮", false);
+			Laya.timer.once(150, this, () => {
+				this.playAudio("gang", false);
+			});
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: sendCardNum ,type: type} }));
+		}else if (type === "minggang") {
+			this.minggangBtn.visible = false;
+			this.passBtn.visible = false;
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeCardNum ,type: type} }));
+			this.playAudio("按钮", false);
+			Laya.timer.once(150, this, () => {
+				this.playAudio("gang", false);
+			});
+		}
+
+		
+		
+		if(audio!= null)
+			Laya.timer.once(150, this, () => {
+				this.playAudio(audio,false)
+			});
 		
 	}
 	
