@@ -43,6 +43,8 @@ export default class Main extends Laya.Script {
 	@property({type: Laya.Image})
 	public angangBtn: Laya.Image;
 	@property({type: Laya.Image})
+	public huagangBtn: Laya.Image;
+	@property({type: Laya.Image})
 	public winningBtn: Laya.Image;
 	
 	/**桌面状态UI相关**/
@@ -188,6 +190,7 @@ export default class Main extends Laya.Script {
 		this.minggangBtn.on(Event.CLICK, this, this.gang, ["minggang","杠"])
 		this.bugangBtn.on(Event.CLICK, this, this.gang, ["bugang","杠"])
 		this.angangBtn.on(Event.CLICK, this, this.gang, ["angang","杠"])
+		this.huagangBtn.on(Event.CLICK, this, this.gang, ["huagang","杠"])
 		this.winningBtn.on(Event.CLICK, this, this.win)
 		//返回大厅
 		this.backHall.on(Event.CLICK, this, () => {this.settlementDialog.visible = false ;this.backToHall();})
@@ -700,6 +703,12 @@ export default class Main extends Laya.Script {
 			this.passBtn.visible = false
 			return;
 		}
+		if (this.huagangBtn.visible ) { //直接杠
+			this.gang('huagang',"杠",this.activeOperateCardNum)
+			this.huagangBtn.visible = false
+			this.passBtn.visible = false
+			return;
+		}
 		if (this.minggangBtn.visible ) { //直接杠
 			this.gang('minggang',"杠",this.activeOperateCardNum)
 			this.minggangBtn.visible = false
@@ -1069,8 +1078,8 @@ export default class Main extends Laya.Script {
 			this.angangBtn.visible = true;
 			this.passBtn.visible = true; 	   
 		} else if (operateType === "huagang") {
-			
-			this.gang("huagang" , null, cardNum)	   
+			this.huagangBtn.visible = true;
+			this.passBtn.visible = true; 	   	   
 		}
 		
 	}
@@ -1080,12 +1089,20 @@ export default class Main extends Laya.Script {
 	 * 【不执行任何操作，隐藏 杠/碰 】
 	 */
 	private pass(): void{
+
+		const userInfo = dataManager.getData("userInfo");
+		const roomInfo = dataManager.getData("roomInfo");
+		
+		const roomId = roomInfo[userInfo?.id]?.roomId;
+		
+		this._socket.sendMessage(JSON.stringify({type: "pass", data: {roomId, userId: userInfo?.id}}))
 		this.playAudio("按钮", false);
 		this.passBtn.visible = false;
 		this.bumpBtn.visible = false;
 		this.minggangBtn.visible = false;
 		this.bugangBtn.visible = false;
 		this.angangBtn.visible = false;
+		this.huagangBtn.visible = false;
 	}
 	/**
 	 * 碰
@@ -1123,11 +1140,14 @@ export default class Main extends Laya.Script {
 		const roomInfo = dataManager.getData("roomInfo");
 		const roomId = roomInfo[userInfo?.id]?.roomId;
 		const sendCardNum = cardNum;
-		
+		// console.log(`我是${this.activeOperateCardNum}`);
 		if (type === "huagang") {
-			// 服务器发来什么cardNum就返回什么
-			
-			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: sendCardNum,type: type  } }));
+			this.huagangBtn.visible = false;
+			this.passBtn.visible = false;
+			Laya.timer.once(150, this, () => {
+				this.playAudio("gang", false);
+			});
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeOperateCardNum,type: type  } }));
         
 		} else if (type === "angang") {
 			this.angangBtn.visible = false;
@@ -1135,7 +1155,7 @@ export default class Main extends Laya.Script {
 			Laya.timer.once(150, this, () => {
 				this.playAudio("gang", false);
 			});
-			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeCardNum,type: type } }));
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeOperateCardNum,type: type } }));
 			this.playAudio("按钮", false);
 
 		} else if (type === "bugang") {
@@ -1145,11 +1165,11 @@ export default class Main extends Laya.Script {
 			Laya.timer.once(150, this, () => {
 				this.playAudio("gang", false);
 			});
-			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: sendCardNum ,type: type} }));
-		}else if (type === "minggang") {
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeOperateCardNum ,type: type} }));
+		} else if (type === "minggang") {
 			this.minggangBtn.visible = false;
 			this.passBtn.visible = false;
-			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeCardNum ,type: type} }));
+			this._socket.sendMessage(JSON.stringify({ type: "gang", data: { roomId, userId: userInfo?.id, cardNum: this.activeOperateCardNum ,type: type} }));
 			this.playAudio("按钮", false);
 			Laya.timer.once(150, this, () => {
 				this.playAudio("gang", false);

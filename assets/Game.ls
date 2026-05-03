@@ -53,6 +53,9 @@
       "angangBtn": {
         "_$ref": "fhij90hi"
       },
+      "huagangBtn": {
+        "_$ref": "fhij90hi"
+      },
       "winningBtn": {
         "_$ref": "h8jepkrx"
       },

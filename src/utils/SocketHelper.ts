@@ -79,7 +79,7 @@ class SocketHelper {
 	 * @private
 	 */
 	public onSocketOpen(e: any = null): void {
-		console.log("ws连接服务端成功");
+		// console.log("ws连接服务端成功");
 		this.onSocketOpenCallback();
 		this.startHeartbeat();
 		this.reconnectAttempts = 0;
@@ -159,6 +159,7 @@ class SocketHelper {
 	 * @param msg
 	 */
 	sendMessage(msg: any): void {
+		// console.log(`我是${msg}`);
 		this.websocket.send(msg);
 		this.websocket.flush();
 	}

@@ -43,7 +43,7 @@ class HandleReceivedMessage{
 		} else {
 			data = JSON.parse(message);
 		}
-		console.log("处理来自服务端的消息:", data);
+		// console.log("处理来自服务端的消息:", data);
 		const type = data?.type;
 		const gameInfo = data?.data?.gameInfo;
 		const roomInfo = data?.data?.roomInfo;
