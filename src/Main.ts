@@ -63,7 +63,7 @@ export default class Main extends Laya.Script {
 	@property({type: Laya.Image})
 	public countdown1: Laya.Image;
 	// 每次打牌后最多20秒倒计时
-	private countdownNum: number = 2;//一会记得改  
+	private countdownNum: number = 15;//一会记得改  
 	// 剩余多少张牌label
 	@property({type: Laya.Label})
 	public remainingLabel: Laya.Label;
@@ -696,63 +696,63 @@ export default class Main extends Laya.Script {
 	/**
 	 * 20秒倒计时之后，玩家仍未出牌，则系统AI直接辅助出牌
 	 */
-	public handleCardPlayByAI(): void {
-		if (this.winningBtn.visible) { //直接胡牌
-			this.win()
-			this.winningBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		if (this.huagangBtn.visible ) { //直接杠
-			this.gang('huagang',"杠",this.activeOperateCardNum)
-			this.huagangBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		if (this.minggangBtn.visible ) { //直接杠
-			this.gang('minggang',"杠",this.activeOperateCardNum)
-			this.minggangBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		if (this.bugangBtn.visible) { //直接杠
-			this.gang('bugang',"杠",this.activeOperateCardNum)
-			this.bugangBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		if (this.angangBtn.visible) { //直接杠
-			this.gang('angang',"杠",this.activeOperateCardNum)
-			this.angangBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		if (this.bumpBtn.visible) { //直接碰
-			this.peng()
-			this.bumpBtn.visible = false
-			this.passBtn.visible = false
-			return;
-		}
-		let permission = this.checkCanOperate()
-		if(!permission) return
-		// todo 先随机出一张牌，后期增加AI托管功能
-		const roomInfo = dataManager.getData("roomInfo");
-		const userInfo = dataManager.getData("userInfo");
-		const roomId = roomInfo[userInfo?.id]?.roomId;
-		const handCards = roomInfo[userInfo?.id]?.handCards;
-		const len = handCards?.length;
+	// public handleCardPlayByAI(): void {
+	// 	if (this.winningBtn.visible) { //直接胡牌
+	// 		this.win()
+	// 		this.winningBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	if (this.huagangBtn.visible ) { //直接杠
+	// 		this.gang('huagang',"杠",this.activeOperateCardNum)
+	// 		this.huagangBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	if (this.minggangBtn.visible ) { //直接杠
+	// 		this.gang('minggang',"杠",this.activeOperateCardNum)
+	// 		this.minggangBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	if (this.bugangBtn.visible) { //直接杠
+	// 		this.gang('bugang',"杠",this.activeOperateCardNum)
+	// 		this.bugangBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	if (this.angangBtn.visible) { //直接杠
+	// 		this.gang('angang',"杠",this.activeOperateCardNum)
+	// 		this.angangBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	if (this.bumpBtn.visible) { //直接碰
+	// 		this.peng()
+	// 		this.bumpBtn.visible = false
+	// 		this.passBtn.visible = false
+	// 		return;
+	// 	}
+	// 	let permission = this.checkCanOperate()
+	// 	if(!permission) return
+	// 	// todo 先随机出一张牌，后期增加AI托管功能
+	// 	const roomInfo = dataManager.getData("roomInfo");
+	// 	const userInfo = dataManager.getData("userInfo");
+	// 	const roomId = roomInfo[userInfo?.id]?.roomId;
+	// 	const handCards = roomInfo[userInfo?.id]?.handCards;
+	// 	const len = handCards?.length;
 
-		const randomIdx = Math.floor(Math.random() * len);
+	// 	const randomIdx = Math.floor(Math.random() * len);
 		
-		const cardNum = handCards[randomIdx];
-		this._socket.sendMessage(JSON.stringify({type: "playCard", data: {roomId, cardNum, userId: userInfo?.id}}))
-		this.activeCardNum = cardNum;
-		if(this.passBtn.visible)this.passBtn.visible=false
-		if(this.bumpBtn.visible)this.bumpBtn.visible=false
-		if(this.minggangBtn.visible)this.minggangBtn.visible=false
-		if(this.bugangBtn.visible)this.bugangBtn.visible=false
-		if(this.angangBtn.visible)this.angangBtn.visible=false
-	}
+	// 	const cardNum = handCards[randomIdx];
+	// 	this._socket.sendMessage(JSON.stringify({type: "playCard", data: {roomId, cardNum, userId: userInfo?.id}}))
+	// 	this.activeCardNum = cardNum;
+	// 	if(this.passBtn.visible)this.passBtn.visible=false
+	// 	if(this.bumpBtn.visible)this.bumpBtn.visible=false
+	// 	if(this.minggangBtn.visible)this.minggangBtn.visible=false
+	// 	if(this.bugangBtn.visible)this.bugangBtn.visible=false
+	// 	if(this.angangBtn.visible)this.angangBtn.visible=false
+	// }
 	
 	/**
 	 * 绘制打出去的牌（限制最多两行）
@@ -963,7 +963,7 @@ export default class Main extends Laya.Script {
 		this.countdown0.visible = true;
 		this.countdown1.visible = true;
 		if (remainingTime <= 0) {
-			this.handleCardPlayByAI();
+			// this.handleCardPlayByAI();
 			Laya.timer.clear(this, this.renderCountdown)
 			this.countdown0.visible = false;
 			this.countdown1.visible = false;
